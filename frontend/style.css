@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; background: #f3f5f9; color: #1f2937; }
+header { background: #1e3a8a; color: #fff; text-align: center; padding: 24px 12px; }
+header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+header p { margin: 0; opacity: .8; font-size: .9rem; }
+main { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+.card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.card h2 { margin-top: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+label { display: flex; flex-direction: column; font-size: .85rem; font-weight: 600; gap: 4px; }
+input { padding: 9px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: .95rem; }
+input:focus { outline: 2px solid #93c5fd; border-color: #3b82f6; }
+button { padding: 9px 16px; border: 0; border-radius: 6px; background: #2563eb; color: #fff; cursor: pointer; font-size: .9rem; }
+button:hover { background: #1d4ed8; }
+button.secondary { background: #64748b; }
+button.danger { background: #dc2626; }
+button.danger:hover { background: #b91c1c; }
+.actions { margin-top: 16px; display: flex; gap: 10px; }
+.list-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.list-head h2 { margin: 0; }
+.search { display: flex; gap: 8px; flex-wrap: wrap; }
+.search input { min-width: 260px; }
+.table-wrap { overflow-x: auto; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid #e5e7eb; font-size: .9rem; white-space: nowrap; }
+th { background: #f1f5f9; }
+td .row-actions { display: flex; gap: 6px; }
+td button { padding: 5px 10px; font-size: .8rem; }
+.message { padding: 12px 14px; border-radius: 6px; margin-bottom: 16px; font-weight: 600; }
+.message.success { background: #dcfce7; color: #166534; }
+.message.error { background: #fee2e2; color: #991b1b; }
+.empty { text-align: center; color: #64748b; margin-top: 14px; }
+.hidden { display: none; }

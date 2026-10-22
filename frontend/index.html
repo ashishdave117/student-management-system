@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Information Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Student Information Management System</h1>
+    <p>Netlify → Render → MongoDB Atlas</p>
+  </header>
+
+  <main>
+    <div id="message" class="message hidden"></div>
+
+    <section class="card">
+      <h2 id="formTitle">Add Student</h2>
+      <form id="studentForm">
+        <input type="hidden" id="recordId" />
+        <div class="grid">
+          <label>Student ID <input id="studentId" required placeholder="ST101" /></label>
+          <label>Name <input id="name" required placeholder="Rahul Sharma" /></label>
+          <label>Email <input id="email" type="email" required placeholder="rahul@example.com" /></label>
+          <label>Department <input id="department" required placeholder="Computer Science" /></label>
+          <label>Semester <input id="semester" type="number" min="1" max="12" required placeholder="5" /></label>
+          <label>Contact <input id="contact" placeholder="9876543210" /></label>
+        </div>
+        <div class="actions">
+          <button type="submit" id="submitBtn">Add Student</button>
+          <button type="button" id="cancelBtn" class="secondary hidden">Cancel Edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="list-head">
+        <h2>Student List</h2>
+        <div class="search">
+          <input id="searchInput" placeholder="Search by ID, name, email, department" />
+          <button id="searchBtn">Search</button>
+          <button id="resetBtn" class="secondary">Reset</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Sem</th><th>Contact</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <p id="emptyText" class="empty hidden">Koi student record nahi mila.</p>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
