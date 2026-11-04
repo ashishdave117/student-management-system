@@ -1,10 +1,8 @@
 // Configuration for Presentation Tier (Netlify)
-// This file can be edited or overridden via the UI settings modal.
+// Connected to live Render Application Tier
 window.APP_CONFIG = {
-  // Default Render Backend URL
-  // Replace this with your actual Render service URL after deploying!
-  // Example: "https://student-api-xxxx.onrender.com"
-  DEFAULT_API_URL: 'http://localhost:5000',
+  // Production Render Backend URL
+  DEFAULT_API_URL: 'https://student-management-system-oq04.onrender.com',
 
   // Function to get active API URL (checks localStorage first)
   getApiUrl: function () {
