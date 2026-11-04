@@ -1,35 +1,35 @@
 /* ========================================================
    STUDENT INFORMATION MANAGEMENT SYSTEM
-   Three-Tier Cloud Architecture - Royal Black & Gold Theme
+   Three-Tier Cloud Architecture - Professional Navy & White Theme
    ======================================================== */
 
 :root {
-  --primary: #d4af37;
-  --primary-hover: #f3c64c;
-  --primary-light: rgba(212, 175, 55, 0.15);
-  --primary-dark: #aa820a;
-  --secondary: #e5b839;
+  --primary: #2563eb;
+  --primary-hover: #3b82f6;
+  --primary-light: rgba(37, 99, 235, 0.10);
+  --primary-dark: #1d4ed8;
+  --secondary: #0ea5e9;
   --success: #10b981;
   --success-light: rgba(16, 185, 129, 0.15);
   --warning: #f59e0b;
   --warning-light: rgba(245, 158, 11, 0.15);
   --danger: #ef4444;
   --danger-light: rgba(239, 68, 68, 0.15);
-  --dark: #f8fafc;
-  --bg-main: #090a0f;
-  --bg-card: #121520;
-  --bg-header: #0a0c14;
-  --bg-input: #0b0d14;
-  --border-gold: rgba(212, 175, 55, 0.25);
-  --border-subtle: #1e2433;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-gold: #f3c64c;
+  --dark: #172033;
+  --bg-main: #f4f7fb;
+  --bg-card: #172033;
+  --bg-header: #172033;
+  --bg-input: #172033;
+  --border-gold: rgba(37, 99, 235, 0.18);
+  --border-subtle: #334155;
+  --text-main: #172033;
+  --text-muted: #64748b;
+  --text-gold: #3b82f6;
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 4px 15px rgba(212, 175, 55, 0.25);
+  --shadow-gold: 0 4px 15px rgba(37, 99, 235, 0.18);
   --transition: all 0.2s ease-in-out;
   --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -44,8 +44,8 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-main);
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+    radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.035) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.025) 0%, transparent 40%);
   color: var(--text-main);
   line-height: 1.5;
   min-height: 100vh;
@@ -61,7 +61,7 @@ body {
   width: 100%;
 }
 
-/* Header - Royal Obsidian & Gold */
+/* Header - Professional Blue & White */
 header.app-header {
   background: var(--bg-header);
   border-bottom: 2px solid var(--primary);
@@ -88,20 +88,20 @@ header.app-header {
 
 .logo-badge {
   padding: 6px 14px;
-  background: linear-gradient(135deg, #d4af37, #996515);
-  color: #090a0f;
-  border: 1px solid #f3c64c;
+  background: linear-gradient(135deg, #2563eb, #996515);
+  color: #f4f7fb;
+  border: 1px solid #3b82f6;
   border-radius: var(--radius-sm);
   font-weight: 800;
   font-size: 0.85rem;
   letter-spacing: 0.12em;
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.16);
 }
 
 .logo-text h1 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #172033;
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
@@ -158,7 +158,7 @@ header.app-header {
 }
 
 .arch-tier {
-  background: #0d1017;
+  background: #f8fafc;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 12px 16px;
@@ -171,7 +171,7 @@ header.app-header {
 .arch-tier:hover {
   transform: translateY(-2px);
   border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.10);
 }
 
 .arch-icon {
@@ -181,7 +181,7 @@ header.app-header {
 .arch-details h4 {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #172033;
 }
 
 .arch-details p {
@@ -226,7 +226,7 @@ header.app-header {
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 600;
-  background: #10131c;
+  background: #f1f5f9;
   color: var(--text-main);
   border: 1px solid var(--border-subtle);
 }
@@ -293,7 +293,7 @@ header.app-header {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Metrics Grid - Royal Obsidian & Gold */
+/* Metrics Grid - Professional Blue & White */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -316,7 +316,7 @@ header.app-header {
 .stat-card:hover {
   transform: translateY(-2px);
   border-color: var(--primary-hover);
-  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.14);
 }
 
 .stat-info h3 {
@@ -324,7 +324,7 @@ header.app-header {
   font-weight: 700;
   color: var(--text-gold);
   line-height: 1.1;
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  text-shadow: 0 0 10px rgba(37, 99, 235, 0.16);
 }
 
 .stat-info p {
@@ -348,7 +348,7 @@ header.app-header {
   letter-spacing: 0.1em;
   padding: 4px 8px;
   border-radius: 4px;
-  background: #181d2b;
+  background: #eff4fb;
   color: var(--text-gold);
   border: 1px solid var(--border-subtle);
 }
@@ -380,7 +380,7 @@ header.app-header {
 .card-header {
   padding: 16px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: #0f121a;
+  background: #f8fafc;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -389,7 +389,7 @@ header.app-header {
 .card-header h2 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #172033;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -408,7 +408,7 @@ header.app-header {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: #334155;
   margin-bottom: 6px;
 }
 
@@ -424,20 +424,20 @@ header.app-header {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   background-color: var(--bg-input);
-  color: #ffffff;
+  color: #172033;
   transition: var(--transition);
 }
 
 .form-control:focus {
   outline: none;
   border-color: var(--primary);
-  background-color: #0f121c;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+  background-color: #172033;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
 }
 
 .form-control option {
-  background-color: #121520;
-  color: #ffffff;
+  background-color: #172033;
+  color: #172033;
 }
 
 .form-row {
@@ -446,7 +446,7 @@ header.app-header {
   gap: 12px;
 }
 
-/* Buttons - Royal Gold Styling */
+/* Buttons - Professional Blue Styling */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -463,28 +463,28 @@ header.app-header {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #f3c64c 0%, #d4af37 50%, #b38b19 100%);
-  color: #090a0f;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #b38b19 100%);
+  color: #f4f7fb;
   border: 1px solid #fde047;
   font-weight: 700;
   box-shadow: var(--shadow-gold);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #fde047 0%, #e5b839 100%);
+  background: linear-gradient(135deg, #fde047 0%, #0ea5e9 100%);
   color: #000000;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.28);
 }
 
 .btn-secondary {
-  background: #181d2a;
-  color: #e2e8f0;
+  background: #f1f5f9;
+  color: #334155;
   border-color: var(--border-subtle);
 }
 
 .btn-secondary:hover {
-  background: #23293a;
+  background: #334155;
   border-color: var(--primary);
   color: var(--primary);
 }
@@ -496,7 +496,7 @@ header.app-header {
 }
 
 .btn-outline:hover {
-  background: rgba(212, 175, 55, 0.12);
+  background: rgba(37, 99, 235, 0.08);
   border-color: var(--primary);
 }
 
@@ -508,7 +508,7 @@ header.app-header {
 
 .btn-danger:hover {
   background: #ef4444;
-  color: #ffffff;
+  color: #172033;
 }
 
 .btn-sm {
@@ -551,7 +551,7 @@ header.app-header {
   align-items: center;
 }
 
-/* Data Table - Royal Obsidian Table */
+/* Data Table - Clean Enterprise Table */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -567,7 +567,7 @@ table.data-table {
 }
 
 table.data-table thead {
-  background-color: #0c0e15;
+  background-color: #eef2f7;
 }
 
 table.data-table th {
@@ -583,13 +583,13 @@ table.data-table th {
 
 table.data-table td {
   padding: 14px 14px;
-  border-bottom: 1px solid #191e2b;
-  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+  color: #334155;
   vertical-align: middle;
 }
 
 table.data-table tbody tr:hover {
-  background-color: #171b28;
+  background-color: #f1f5f9;
 }
 
 table.data-table tbody tr:last-child td {
@@ -601,9 +601,9 @@ table.data-table tbody tr:last-child td {
   font-family: monospace;
   font-size: 0.85rem;
   padding: 3px 8px;
-  background: rgba(212, 175, 55, 0.15);
-  color: #f3c64c;
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(37, 99, 235, 0.10);
+  color: #3b82f6;
+  border: 1px solid rgba(37, 99, 235, 0.22);
   border-radius: 4px;
   display: inline-block;
 }
@@ -614,9 +614,9 @@ table.data-table tbody tr:last-child td {
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: #181c28;
+  background: #eff4fb;
   color: #cbd5e1;
-  border: 1px solid #283042;
+  border: 1px solid #dbe3ee;
 }
 
 /* Loading & Empty States */
@@ -636,7 +636,7 @@ table.data-table tbody tr:last-child td {
   display: inline-block;
   width: 24px;
   height: 24px;
-  border: 3px solid rgba(212, 175, 55, 0.2);
+  border: 3px solid rgba(37, 99, 235, 0.14);
   border-radius: 50%;
   border-top-color: var(--primary);
   animation: spin 0.8s linear infinite;
@@ -646,7 +646,7 @@ table.data-table tbody tr:last-child td {
   to { transform: rotate(360deg); }
 }
 
-/* Modal Dialog - Royal Dark Glass */
+/* Modal Dialog - Clean Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -689,7 +689,7 @@ table.data-table tbody tr:last-child td {
 .modal-header {
   padding: 16px 20px;
   border-bottom: 1px solid var(--border-subtle);
-  background: #0f121a;
+  background: #f8fafc;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -698,7 +698,7 @@ table.data-table tbody tr:last-child td {
 .modal-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #172033;
 }
 
 .modal-close {
@@ -723,7 +723,7 @@ table.data-table tbody tr:last-child td {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  background-color: #0e1118;
+  background-color: #f8fafc;
 }
 
 /* Toast System */
@@ -739,7 +739,7 @@ table.data-table tbody tr:last-child td {
 }
 
 .toast {
-  background: #141722;
+  background: #172033;
   border-radius: var(--radius-sm);
   padding: 14px 18px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
@@ -751,7 +751,7 @@ table.data-table tbody tr:last-child td {
   gap: 12px;
   font-size: 0.875rem;
   animation: slideIn 0.3s ease-out;
-  color: #ffffff;
+  color: #172033;
 }
 
 .toast.success { border-left-color: var(--success); }
@@ -768,7 +768,7 @@ table.data-table tbody tr:last-child td {
   to { opacity: 1; }
 }
 
-/* Footer - Royal Obsidian */
+/* Footer - Professional */
 footer.app-footer {
   margin-top: auto;
   background: var(--bg-header);
