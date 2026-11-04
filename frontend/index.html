@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Information Management System | Three-Tier Cloud Architecture</title>
+  <title>Student Information Management System</title>
   
-  <!-- Modern Google Font -->
+  <!-- Modern Clean Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 </head>
 <body>
 
@@ -20,10 +19,10 @@
   <header class="app-header">
     <div class="container header-content">
       <div class="logo-group">
-        <div class="logo-icon">👑</div>
+        <div class="logo-badge">SIMS</div>
         <div class="logo-text">
           <h1>Student Information Management System</h1>
-          <p>Royal Cloud Edition &bull; Netlify + Render + MongoDB Atlas</p>
+          <p>Production Cloud Deployment: Netlify &bull; Render &bull; MongoDB Atlas</p>
         </div>
       </div>
 
@@ -36,7 +35,7 @@
 
         <!-- API Endpoint Configuration Button -->
         <button id="settings-btn" class="btn btn-outline btn-sm" title="Configure Backend Render URL">
-          ⚙️ Backend Config
+          Backend Settings
         </button>
       </div>
     </div>
@@ -46,39 +45,39 @@
     <!-- Architecture Visualizer Banner -->
     <div class="architecture-banner">
       <div class="arch-header">
-        <span class="arch-title">⚡ Three-Tier Cloud Architecture Pipeline</span>
-        <span style="font-size: 0.8rem; color: var(--slate-600);">
-          API Endpoint: <code id="backend-url-display" style="background:var(--slate-100);padding:2px 6px;border-radius:4px;">http://localhost:5000</code>
+        <span class="arch-title">Distributed Cloud Architecture</span>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">
+          Endpoint: <code id="backend-url-display" style="background:#090a0f;padding:2px 8px;border-radius:4px;border:1px solid #1e2433;">https://student-management-system-oq04.onrender.com</code>
         </span>
       </div>
       <div class="arch-pipeline">
         <!-- Tier 1 -->
         <div class="arch-tier">
-          <span class="arch-icon">🌐</span>
+          <span class="tier-number">01</span>
           <div class="arch-details">
-            <h4>Tier 1: Presentation Layer</h4>
-            <p>Static UI &amp; REST Client</p>
-            <span class="tier-badge badge-netlify">Hosted on Netlify</span>
+            <h4>Presentation Tier</h4>
+            <p>Static UI and HTTP Client</p>
+            <span class="tier-badge badge-netlify">Netlify Global CDN</span>
           </div>
         </div>
 
         <!-- Tier 2 -->
         <div class="arch-tier">
-          <span class="arch-icon">⚙️</span>
+          <span class="tier-number">02</span>
           <div class="arch-details">
-            <h4>Tier 2: Application Layer</h4>
-            <p>Node.js &amp; Express REST API</p>
-            <span class="tier-badge badge-render">Hosted on Render</span>
+            <h4>Application Tier</h4>
+            <p>Node.js &amp; Express REST Server</p>
+            <span class="tier-badge badge-render">Render Web Service</span>
           </div>
         </div>
 
         <!-- Tier 3 -->
         <div class="arch-tier">
-          <span class="arch-icon">🍃</span>
+          <span class="tier-number">03</span>
           <div class="arch-details">
-            <h4>Tier 3: Database Layer</h4>
-            <p>studentDB &bull; students</p>
-            <span class="tier-badge badge-atlas" id="db-status-badge">Hosted on MongoDB Atlas</span>
+            <h4>Database Tier</h4>
+            <p>Cluster0 / studentDB.students</p>
+            <span class="tier-badge badge-atlas" id="db-status-badge">MongoDB Atlas</span>
           </div>
         </div>
       </div>
@@ -86,7 +85,7 @@
 
     <!-- Cold Start Wakeup Notice (Render Free Tier) -->
     <div id="cold-start-alert" class="cold-start-alert">
-      ⏳ <strong>Waking up Render backend:</strong> Render free-tier services spin down after 15 minutes of inactivity. The server is currently waking up (usually takes 30 to 50 seconds). Once awake, all records will load automatically!
+      <strong>Server Notice:</strong> The backend container is currently resuming from idle state. Requests may take 30 to 45 seconds to process while the Node runtime initializes.
     </div>
 
     <!-- Metrics Stats Grid -->
@@ -94,17 +93,17 @@
       <div class="stat-card">
         <div class="stat-info">
           <h3 id="stat-total-students">0</h3>
-          <p>Total Students Enrolled</p>
+          <p>Total Registered Students</p>
         </div>
-        <div class="stat-icon blue">👨‍🎓</div>
+        <span class="stat-label">ENROLLED</span>
       </div>
 
       <div class="stat-card">
         <div class="stat-info">
           <h3 id="stat-total-depts">0</h3>
-          <p>Active Departments</p>
+          <p>Academic Departments</p>
         </div>
-        <div class="stat-icon purple">🏛️</div>
+        <span class="stat-label">FACULTIES</span>
       </div>
 
       <div class="stat-card">
@@ -112,15 +111,15 @@
           <h3 id="stat-avg-semester">-</h3>
           <p>Average Semester</p>
         </div>
-        <div class="stat-icon green">📊</div>
+        <span class="stat-label">COHORTS</span>
       </div>
 
       <div class="stat-card">
         <div class="stat-info">
-          <h3 style="font-size: 1.2rem; color: var(--success); font-weight: 700;">Live Sync</h3>
-          <p>Cloud Monitored</p>
+          <h3 style="font-size: 1.3rem; color: var(--success); font-weight: 700;">Operational</h3>
+          <p>Database Health</p>
         </div>
-        <div class="stat-icon amber">☁️</div>
+        <span class="stat-label">STATUS</span>
       </div>
     </div>
 
@@ -130,12 +129,12 @@
       <!-- Left Column: Add Student Card -->
       <section class="card">
         <div class="card-header">
-          <h2>➕ Add New Student</h2>
+          <h2>Register Student</h2>
         </div>
         <div class="card-body">
           <form id="add-student-form">
             <div class="form-group">
-              <label for="student-id">Student ID <span class="req">*</span></label>
+              <label for="student-id">Student Identifier <span class="req">*</span></label>
               <input type="text" id="student-id" class="form-control" placeholder="e.g. ST101" required autocomplete="off">
             </div>
 
@@ -145,7 +144,7 @@
             </div>
 
             <div class="form-group">
-              <label for="student-email">Email Address <span class="req">*</span></label>
+              <label for="student-email">Institutional Email <span class="req">*</span></label>
               <input type="email" id="student-email" class="form-control" placeholder="e.g. rahul@example.com" required autocomplete="off">
             </div>
 
@@ -168,13 +167,13 @@
               </div>
 
               <div class="form-group">
-                <label for="student-contact">Contact No.</label>
+                <label for="student-contact">Contact Number</label>
                 <input type="tel" id="student-contact" class="form-control" placeholder="e.g. 9876543210">
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 8px;">
-              💾 Save to MongoDB Atlas
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">
+              Save Student Record
             </button>
           </form>
         </div>
@@ -183,16 +182,15 @@
       <!-- Right Column: Student Records Directory -->
       <section class="card">
         <div class="card-header">
-          <h2>📚 Student Records Directory</h2>
+          <h2>Student Directory</h2>
           <button id="refresh-btn" class="btn btn-outline btn-sm" title="Reload data">
-            🔄 Refresh
+            Refresh
           </button>
         </div>
         <div class="card-body">
           <!-- Search & Filter Bar -->
           <div class="table-toolbar">
             <div class="search-box">
-              <span class="search-icon">🔍</span>
               <input type="text" id="search-input" class="form-control" placeholder="Search by name, ID, or email...">
             </div>
 
@@ -240,14 +238,14 @@
   <div id="edit-modal" class="modal-overlay">
     <div class="modal-dialog">
       <div class="modal-header">
-        <h3>✏️ Edit Student Information</h3>
-        <button id="close-edit-modal" class="modal-close">&times;</button>
+        <h3>Edit Student Information</h3>
+        <button id="close-edit-modal" class="modal-close" aria-label="Close modal">&times;</button>
       </div>
       <form id="edit-student-form">
         <div class="modal-body">
           <div class="form-group">
-            <label for="edit-student-id">Student ID (Cannot be changed)</label>
-            <input type="text" id="edit-student-id" class="form-control" readonly disabled style="background-color: var(--slate-100);">
+            <label for="edit-student-id">Student Identifier</label>
+            <input type="text" id="edit-student-id" class="form-control" readonly disabled style="opacity: 0.6;">
           </div>
 
           <div class="form-group">
@@ -256,7 +254,7 @@
           </div>
 
           <div class="form-group">
-            <label for="edit-student-email">Email Address <span class="req">*</span></label>
+            <label for="edit-student-email">Institutional Email <span class="req">*</span></label>
             <input type="email" id="edit-student-email" class="form-control" required>
           </div>
 
@@ -278,7 +276,7 @@
             </div>
 
             <div class="form-group">
-              <label for="edit-student-contact">Contact No.</label>
+              <label for="edit-student-contact">Contact Number</label>
               <input type="tel" id="edit-student-contact" class="form-control">
             </div>
           </div>
@@ -295,22 +293,22 @@
   <div id="settings-modal" class="modal-overlay">
     <div class="modal-dialog">
       <div class="modal-header">
-        <h3>⚙️ Render Backend Configuration</h3>
-        <button id="close-settings-modal" class="modal-close">&times;</button>
+        <h3>Server Configuration</h3>
+        <button id="close-settings-modal" class="modal-close" aria-label="Close modal">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.85rem; color: var(--slate-600); margin-bottom: 12px;">
-          Set the public URL of your Node.js/Express server deployed on Render. When deploying to Netlify, this ensures the frontend sends REST API calls to your live cloud server.
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+          Configure the target REST API endpoint for backend service communication. The client stores this setting locally in browser storage.
         </p>
         <div class="form-group">
-          <label for="api-url-input">Render Service API URL</label>
-          <input type="url" id="api-url-input" class="form-control" placeholder="https://your-service-name.onrender.com">
-          <small style="color: var(--slate-400); font-size: 0.75rem;">Example: <code>https://student-api.onrender.com</code> or <code>http://localhost:5000</code></small>
+          <label for="api-url-input">API Base URL</label>
+          <input type="url" id="api-url-input" class="form-control" placeholder="https://your-service.onrender.com">
+          <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Default: <code>https://student-management-system-oq04.onrender.com</code></small>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" id="reset-settings-btn" class="btn btn-secondary">Reset to Default</button>
-        <button type="button" id="save-settings-btn" class="btn btn-primary">Save &amp; Connect</button>
+        <button type="button" id="save-settings-btn" class="btn btn-primary">Save and Connect</button>
       </div>
     </div>
   </div>
@@ -322,10 +320,10 @@
   <footer class="app-footer">
     <div class="container footer-content">
       <div>
-        <strong>Cloud Architecture:</strong> Client (Browser) &rarr; Netlify (Presentation) &rarr; Render (Application) &rarr; MongoDB Atlas (Database)
+        Student Information Management System &bull; Architecture: Netlify + Render + MongoDB Atlas
       </div>
       <div>
-        <span>Automated Continuous Deployment via GitHub CI/CD</span>
+        Continuous Deployment via GitHub
       </div>
     </div>
   </footer>

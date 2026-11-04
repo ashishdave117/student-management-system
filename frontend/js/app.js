@@ -1,9 +1,10 @@
 // ========================================================
 // Student Information Management System - Main Application Logic
+// Professional Human-Crafted Architecture Client
 // ========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // State
+  // Application State
   let students = [];
   let isCheckingHealth = false;
   let activeStudentForEdit = null;
@@ -15,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const backendUrlDisplay = document.getElementById('backend-url-display');
   const dbStatusBadge = document.getElementById('db-status-badge');
 
-  // Stats
+  // Metrics
   const statTotalStudents = document.getElementById('stat-total-students');
   const statTotalDepts = document.getElementById('stat-total-depts');
   const statAvgSemester = document.getElementById('stat-avg-semester');
 
-  // Forms & Tables
+  // Form & Table Elements
   const addStudentForm = document.getElementById('add-student-form');
   const studentsTableBody = document.getElementById('students-table-body');
   const tableStateContainer = document.getElementById('table-state');
@@ -51,16 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
 
-    const iconMap = {
-      success: '✓',
-      error: '✕',
-      warning: '⚠',
-      info: 'ℹ',
+    const labelMap = {
+      success: 'SUCCESS',
+      error: 'ERROR',
+      warning: 'NOTICE',
+      info: 'INFO',
     };
 
     toast.innerHTML = `
-      <span><strong>${iconMap[type] || '•'}</strong> ${message}</span>
-      <button style="background:none;border:none;cursor:pointer;color:inherit;font-size:16px;">&times;</button>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.05em;opacity:0.75;">${labelMap[type] || 'INFO'}</span>
+        <span>${message}</span>
+      </div>
+      <button style="background:none;border:none;cursor:pointer;color:inherit;font-size:18px;margin-left:12px;opacity:0.6;">&times;</button>
     `;
 
     toast.querySelector('button').addEventListener('click', () => toast.remove());
@@ -90,15 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await API.checkHealth();
 
       statusPill.className = 'status-pill online';
-      statusText.textContent = 'Render API Connected';
+      statusText.textContent = 'Backend Active';
       coldStartAlert.classList.remove('active');
 
       if (dbStatusBadge && data.tiers && data.tiers.database) {
-        dbStatusBadge.textContent = `Atlas: ${data.tiers.database.status}`;
+        dbStatusBadge.textContent = `MongoDB: ${data.tiers.database.status}`;
       }
 
       if (!quiet) {
-        showToast('Backend and Database connected successfully!', 'success');
+        showToast('Backend and database connection verified.', 'success');
       }
     } catch (err) {
       statusPill.className = 'status-pill offline';
@@ -106,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
       coldStartAlert.classList.add('active');
 
       if (dbStatusBadge) {
-        dbStatusBadge.textContent = 'Atlas: Pending';
+        dbStatusBadge.textContent = 'MongoDB: Reconnecting';
       }
 
       if (!quiet) {
         showToast(
-          'Render service is starting up (sleep mode). Please allow 30-50 seconds.',
+          'Backend is initializing from idle mode. Please allow up to 45 seconds.',
           'warning'
         );
       }
@@ -145,9 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tableStateContainer.style.display = 'block';
       tableStateContainer.innerHTML = `
         <div class="state-message">
-          <span class="icon">📋</span>
           <h4>No student records found</h4>
-          <p>Add a new student using the form on the left or try adjusting your search filters.</p>
+          <p style="font-size:0.85rem;margin-top:4px;">No records match your current criteria. Register a student or clear filters.</p>
         </div>
       `;
       return;
@@ -160,17 +163,17 @@ document.addEventListener('DOMContentLoaded', () => {
       tr.innerHTML = `
         <td><span class="student-badge">${escapeHtml(student.studentId)}</span></td>
         <td><strong>${escapeHtml(student.name)}</strong></td>
-        <td><a href="mailto:${escapeHtml(student.email)}" style="color:var(--primary);text-decoration:none;">${escapeHtml(student.email)}</a></td>
+        <td><a href="mailto:${escapeHtml(student.email)}" style="color:var(--text-gold);text-decoration:none;">${escapeHtml(student.email)}</a></td>
         <td><span class="dept-pill">${escapeHtml(student.department)}</span></td>
         <td>Sem ${escapeHtml(String(student.semester))}</td>
         <td>${escapeHtml(student.contact || '—')}</td>
         <td>
           <div class="btn-group">
             <button class="btn btn-secondary btn-sm edit-btn" data-id="${escapeHtml(student.studentId || student._id)}">
-              ✏️ Edit
+              Edit
             </button>
             <button class="btn btn-danger btn-sm delete-btn" data-id="${escapeHtml(student.studentId || student._id)}" data-name="${escapeHtml(student.name)}">
-              🗑️ Delete
+              Delete
             </button>
           </div>
         </td>
@@ -201,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tableStateContainer.innerHTML = `
       <div class="state-message">
         <div class="spinner"></div>
-        <p style="margin-top:12px;">Loading student records from MongoDB Atlas via Render...</p>
+        <p style="margin-top:12px;font-size:0.85rem;">Retrieving student records from database...</p>
       </div>
     `;
 
@@ -217,10 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
       tableStateContainer.style.display = 'block';
       tableStateContainer.innerHTML = `
         <div class="state-message">
-          <span class="icon">⚠️</span>
           <h4>Failed to load student records</h4>
-          <p style="color:var(--danger);">${escapeHtml(err.message)}</p>
-          <button id="retry-load-btn" class="btn btn-primary btn-sm" style="margin-top:12px;">Retry</button>
+          <p style="color:var(--danger);font-size:0.85rem;">${escapeHtml(err.message)}</p>
+          <button id="retry-load-btn" class="btn btn-primary btn-sm" style="margin-top:12px;">Retry Request</button>
         </div>
       `;
       const retryBtn = document.getElementById('retry-load-btn');
@@ -237,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = addStudentForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Saving...';
+    submitBtn.innerHTML = '<span class="spinner" style="width:14px;height:14px;border-width:2px;"></span> Saving...';
 
     const newStudent = {
       studentId: document.getElementById('student-id').value.trim(),
@@ -250,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const res = await API.createStudent(newStudent);
-      showToast(res.message || 'Student added successfully!', 'success');
+      showToast(res.message || 'Student registered successfully.', 'success');
       addStudentForm.reset();
       await loadStudents();
     } catch (err) {
@@ -307,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const res = await API.updateStudent(id, updatedData);
-      showToast(res.message || 'Student updated successfully!', 'success');
+      showToast(res.message || 'Student record updated successfully.', 'success');
       closeEditModal();
       await loadStudents();
     } catch (err) {
@@ -320,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========================================================
   async function handleDeleteStudent(id, name) {
     const confirmDelete = window.confirm(
-      `Are you sure you want to remove student "${name}" (ID: ${id})?\n\nThis will permanently delete the record from MongoDB Atlas.`
+      `Are you sure you want to remove student "${name}" (ID: ${id})?\n\nThis will permanently delete the record from the database.`
     );
 
     if (!confirmDelete) return;
@@ -385,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.APP_CONFIG.resetApiUrl();
     apiUrlInput.value = window.APP_CONFIG.DEFAULT_API_URL;
     settingsModal.classList.remove('active');
-    showToast('API URL reset to default', 'info');
+    showToast('API URL reset to default configuration.', 'info');
 
     await checkServerHealth(false);
     await loadStudents();
