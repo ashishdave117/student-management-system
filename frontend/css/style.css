@@ -1,32 +1,35 @@
 /* ========================================================
    STUDENT INFORMATION MANAGEMENT SYSTEM
-   Three-Tier Cloud Architecture Presentation Layer (Netlify)
+   Three-Tier Cloud Architecture - Royal Black & Gold Theme
    ======================================================== */
 
 :root {
-  --primary: #eab308;
-  --primary-hover: #ca8a04;
-  --primary-light: #fef9c3;
-  --primary-dark: #854d0e;
-  --secondary: #f59e0b;
+  --primary: #d4af37;
+  --primary-hover: #f3c64c;
+  --primary-light: rgba(212, 175, 55, 0.15);
+  --primary-dark: #aa820a;
+  --secondary: #e5b839;
   --success: #10b981;
-  --success-light: #ecfdf5;
+  --success-light: rgba(16, 185, 129, 0.15);
   --warning: #f59e0b;
-  --warning-light: #fffbeb;
+  --warning-light: rgba(245, 158, 11, 0.15);
   --danger: #ef4444;
-  --danger-light: #fef2f2;
-  --dark: #0f172a;
-  --slate-800: #1e293b;
-  --slate-600: #475569;
-  --slate-400: #94a3b8;
-  --slate-200: #e2e8f0;
-  --slate-100: #fefce8;
-  --slate-50: #fffdf5;
-  --white: #ffffff;
+  --danger-light: rgba(239, 68, 68, 0.15);
+  --dark: #f8fafc;
+  --bg-main: #090a0f;
+  --bg-card: #121520;
+  --bg-header: #0a0c14;
+  --bg-input: #0b0d14;
+  --border-gold: rgba(212, 175, 55, 0.25);
+  --border-subtle: #1e2433;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-gold: #f3c64c;
   --radius: 12px;
   --radius-sm: 8px;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.06);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 4px 15px rgba(212, 175, 55, 0.25);
   --transition: all 0.2s ease-in-out;
   --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -39,8 +42,11 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--slate-50);
-  color: var(--slate-800);
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+  color: var(--text-main);
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
@@ -55,15 +61,15 @@ body {
   width: 100%;
 }
 
-/* Header */
+/* Header - Royal Obsidian & Gold */
 header.app-header {
-  background: linear-gradient(135deg, #fefce8 0%, #fef08a 60%, #fde047 100%);
-  border-bottom: 2px solid #eab308;
+  background: var(--bg-header);
+  border-bottom: 2px solid var(--primary);
   padding: 18px 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .header-content {
@@ -83,29 +89,31 @@ header.app-header {
 .logo-icon {
   width: 44px;
   height: 44px;
-  background: #1e293b;
-  color: #facc15;
-  border: 2px solid #ca8a04;
+  background: linear-gradient(135deg, #d4af37, #996515);
+  color: #090a0f;
+  border: 1px solid #f3c64c;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
 }
 
 .logo-text h1 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffffff;
+  letter-spacing: -0.01em;
   line-height: 1.2;
 }
 
 .logo-text p {
   font-size: 0.8rem;
-  color: #713f12;
+  color: var(--text-gold);
   font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .header-actions {
@@ -116,13 +124,13 @@ header.app-header {
 
 /* Cloud Architecture Visualizer */
 .architecture-banner {
-  background: var(--white);
-  border: 1px solid #fef08a;
-  border-left: 5px solid #eab308;
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
+  border-left: 5px solid var(--primary);
   border-radius: var(--radius);
   padding: 16px 20px;
   margin: 20px 0;
-  box-shadow: 0 4px 10px rgba(234, 179, 8, 0.08);
+  box-shadow: var(--shadow);
 }
 
 .arch-header {
@@ -138,8 +146,8 @@ header.app-header {
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--slate-600);
+  letter-spacing: 0.08em;
+  color: var(--text-gold);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -150,12 +158,11 @@ header.app-header {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
   align-items: center;
-  position: relative;
 }
 
 .arch-tier {
-  background: var(--slate-50);
-  border: 1px solid var(--slate-200);
+  background: #0d1017;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 12px 16px;
   display: flex;
@@ -167,6 +174,7 @@ header.app-header {
 .arch-tier:hover {
   transform: translateY(-2px);
   border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
 }
 
 .arch-icon {
@@ -176,12 +184,12 @@ header.app-header {
 .arch-details h4 {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--dark);
+  color: #ffffff;
 }
 
 .arch-details p {
   font-size: 0.75rem;
-  color: var(--slate-600);
+  color: var(--text-muted);
 }
 
 .tier-badge {
@@ -191,21 +199,25 @@ header.app-header {
   padding: 2px 8px;
   border-radius: 9999px;
   margin-top: 4px;
+  letter-spacing: 0.03em;
 }
 
 .badge-netlify {
-  background: #e0f2fe;
-  color: #0369a1;
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
 .badge-render {
-  background: #ede9fe;
-  color: #6d28d9;
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .badge-atlas {
-  background: #dcfce7;
-  color: #15803d;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 /* Status Pill */
@@ -217,46 +229,46 @@ header.app-header {
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 600;
-  background: var(--slate-100);
-  color: var(--slate-800);
-  border: 1px solid var(--slate-200);
+  background: #10131c;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
 }
 
 .status-dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background-color: var(--slate-400);
+  background-color: var(--text-muted);
 }
 
 .status-pill.online {
-  background: var(--success-light);
-  color: var(--success);
-  border-color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.4);
 }
 .status-pill.online .status-dot {
-  background: var(--success);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
   animation: pulse 2s infinite;
 }
 
 .status-pill.connecting {
-  background: var(--warning-light);
-  color: var(--warning);
-  border-color: #fde68a;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.4);
 }
 .status-pill.connecting .status-dot {
-  background: var(--warning);
+  background: #f59e0b;
   animation: pulse 1s infinite;
 }
 
 .status-pill.offline {
-  background: var(--danger-light);
-  color: var(--danger);
-  border-color: #fecaca;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.4);
 }
 .status-pill.offline .status-dot {
-  background: var(--danger);
+  background: #ef4444;
 }
 
 @keyframes pulse {
@@ -265,16 +277,17 @@ header.app-header {
   100% { transform: scale(0.95); opacity: 0.8; }
 }
 
-/* Wakeup Alert (For Render Cold Starts) */
+/* Wakeup Alert */
 .cold-start-alert {
-  background: #fffbeb;
+  background: rgba(245, 158, 11, 0.12);
   border-left: 4px solid var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   padding: 12px 16px;
   border-radius: var(--radius-sm);
   margin-bottom: 20px;
   display: none;
   font-size: 0.85rem;
-  color: #92400e;
+  color: #fde68a;
   line-height: 1.4;
 }
 
@@ -283,7 +296,7 @@ header.app-header {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Metrics Grid */
+/* Metrics Grid - Royal Obsidian & Gold */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -292,10 +305,10 @@ header.app-header {
 }
 
 .stat-card {
-  background: var(--white);
-  border: 1px solid var(--slate-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius);
-  padding: 16px 20px;
+  padding: 18px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -305,19 +318,21 @@ header.app-header {
 
 .stat-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-hover);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.2);
 }
 
 .stat-info h3 {
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--text-gold);
   line-height: 1.1;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .stat-info p {
   font-size: 0.8rem;
-  color: var(--slate-600);
+  color: var(--text-muted);
   font-weight: 500;
   margin-top: 4px;
 }
@@ -330,12 +345,14 @@ header.app-header {
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  background: #1c2130;
+  border: 1px solid var(--border-gold);
 }
 
-.stat-icon.blue { background: #e0f2fe; color: #0284c7; }
-.stat-icon.purple { background: #ede9fe; color: #7c3aed; }
-.stat-icon.green { background: #dcfce7; color: #16a34a; }
-.stat-icon.amber { background: #fef3c7; color: #d97706; }
+.stat-icon.blue { background: rgba(14, 165, 233, 0.15); color: #38bdf8; }
+.stat-icon.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+.stat-icon.green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.stat-icon.amber { background: rgba(212, 175, 55, 0.15); color: #f3c64c; }
 
 /* Main Grid Layout */
 .main-layout {
@@ -354,8 +371,8 @@ header.app-header {
 
 /* Cards */
 .card {
-  background: var(--white);
-  border: 1px solid var(--slate-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
@@ -363,7 +380,8 @@ header.app-header {
 
 .card-header {
   padding: 16px 20px;
-  border-bottom: 1px solid var(--slate-200);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #0f121a;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -372,7 +390,7 @@ header.app-header {
 .card-header h2 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--dark);
+  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -391,31 +409,36 @@ header.app-header {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--slate-800);
+  color: #e2e8f0;
   margin-bottom: 6px;
 }
 
 .form-group label span.req {
-  color: var(--danger);
+  color: var(--primary);
 }
 
 .form-control {
   width: 100%;
-  padding: 9px 12px;
+  padding: 10px 14px;
   font-size: 0.9rem;
   font-family: inherit;
-  border: 1px solid var(--slate-200);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  background-color: var(--slate-50);
-  color: var(--dark);
+  background-color: var(--bg-input);
+  color: #ffffff;
   transition: var(--transition);
 }
 
 .form-control:focus {
   outline: none;
   border-color: var(--primary);
-  background-color: var(--white);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  background-color: #0f121c;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+.form-control option {
+  background-color: #121520;
+  color: #ffffff;
 }
 
 .form-row {
@@ -424,7 +447,7 @@ header.app-header {
   gap: 12px;
 }
 
-/* Buttons */
+/* Buttons - Royal Gold Styling */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -432,7 +455,7 @@ header.app-header {
   gap: 8px;
   font-size: 0.875rem;
   font-weight: 600;
-  padding: 9px 16px;
+  padding: 10px 18px;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
@@ -441,53 +464,56 @@ header.app-header {
 }
 
 .btn-primary {
-  background: #facc15;
-  color: #1e293b;
-  border-color: #eab308;
+  background: linear-gradient(135deg, #f3c64c 0%, #d4af37 50%, #b38b19 100%);
+  color: #090a0f;
+  border: 1px solid #fde047;
   font-weight: 700;
-  box-shadow: 0 2px 4px rgba(234, 179, 8, 0.25);
+  box-shadow: var(--shadow-gold);
 }
 
 .btn-primary:hover {
-  background: #eab308;
-  color: #0f172a;
+  background: linear-gradient(135deg, #fde047 0%, #e5b839 100%);
+  color: #000000;
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
 .btn-secondary {
-  background: var(--slate-100);
-  color: var(--slate-800);
-  border-color: var(--slate-200);
+  background: #181d2a;
+  color: #e2e8f0;
+  border-color: var(--border-subtle);
 }
 
 .btn-secondary:hover {
-  background: var(--slate-200);
+  background: #23293a;
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn-outline {
   background: transparent;
-  border-color: var(--slate-200);
-  color: var(--slate-800);
+  border-color: var(--border-gold);
+  color: var(--text-gold);
 }
 
 .btn-outline:hover {
-  background: var(--slate-100);
-  border-color: var(--slate-400);
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--primary);
 }
 
 .btn-danger {
-  background: var(--danger-light);
-  color: var(--danger);
-  border-color: #fca5a5;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.35);
 }
 
 .btn-danger:hover {
-  background: var(--danger);
-  color: var(--white);
+  background: #ef4444;
+  color: #ffffff;
 }
 
 .btn-sm {
-  padding: 5px 10px;
+  padding: 6px 12px;
   font-size: 0.8rem;
 }
 
@@ -500,7 +526,7 @@ header.app-header {
   gap: 8px;
 }
 
-/* Action Bar (Search & Filter) */
+/* Action Bar */
 .table-toolbar {
   display: flex;
   justify-content: space-between;
@@ -525,7 +551,7 @@ header.app-header {
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--slate-400);
+  color: var(--primary);
   font-size: 14px;
 }
 
@@ -535,12 +561,12 @@ header.app-header {
   align-items: center;
 }
 
-/* Data Table */
+/* Data Table - Royal Obsidian Table */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--slate-200);
+  border: 1px solid var(--border-subtle);
 }
 
 table.data-table {
@@ -551,29 +577,29 @@ table.data-table {
 }
 
 table.data-table thead {
-  background-color: var(--slate-100);
+  background-color: #0c0e15;
 }
 
 table.data-table th {
   padding: 12px 14px;
   font-weight: 600;
-  color: var(--slate-600);
-  border-bottom: 1px solid var(--slate-200);
+  color: var(--text-gold);
+  border-bottom: 1px solid var(--border-gold);
   text-transform: uppercase;
   font-size: 0.725rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   white-space: nowrap;
 }
 
 table.data-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--slate-200);
-  color: var(--slate-800);
+  padding: 14px 14px;
+  border-bottom: 1px solid #191e2b;
+  color: #e2e8f0;
   vertical-align: middle;
 }
 
 table.data-table tbody tr:hover {
-  background-color: var(--slate-50);
+  background-color: #171b28;
 }
 
 table.data-table tbody tr:last-child td {
@@ -585,28 +611,29 @@ table.data-table tbody tr:last-child td {
   font-family: monospace;
   font-size: 0.85rem;
   padding: 3px 8px;
-  background: #fef08a;
-  color: #854d0e;
-  border: 1px solid #fde047;
+  background: rgba(212, 175, 55, 0.15);
+  color: #f3c64c;
+  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 4px;
   display: inline-block;
 }
 
 .dept-pill {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: var(--slate-100);
-  color: var(--slate-800);
+  background: #181c28;
+  color: #cbd5e1;
+  border: 1px solid #283042;
 }
 
 /* Loading & Empty States */
 .state-message {
   text-align: center;
   padding: 40px 20px;
-  color: var(--slate-600);
+  color: var(--text-muted);
 }
 
 .state-message .icon {
@@ -619,7 +646,7 @@ table.data-table tbody tr:last-child td {
   display: inline-block;
   width: 24px;
   height: 24px;
-  border: 3px solid rgba(79, 70, 229, 0.2);
+  border: 3px solid rgba(212, 175, 55, 0.2);
   border-radius: 50%;
   border-top-color: var(--primary);
   animation: spin 0.8s linear infinite;
@@ -629,15 +656,15 @@ table.data-table tbody tr:last-child td {
   to { transform: rotate(360deg); }
 }
 
-/* Modal Dialog */
+/* Modal Dialog - Royal Dark Glass */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(4px);
+  background-color: rgba(5, 6, 10, 0.8);
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -654,11 +681,12 @@ table.data-table tbody tr:last-child td {
 }
 
 .modal-dialog {
-  background: var(--white);
+  background: var(--bg-card);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius);
   max-width: 500px;
   width: 100%;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
   transform: translateY(20px);
   transition: var(--transition);
   overflow: hidden;
@@ -670,7 +698,8 @@ table.data-table tbody tr:last-child td {
 
 .modal-header {
   padding: 16px 20px;
-  border-bottom: 1px solid var(--slate-200);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #0f121a;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -679,7 +708,7 @@ table.data-table tbody tr:last-child td {
 .modal-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--dark);
+  color: #ffffff;
 }
 
 .modal-close {
@@ -687,11 +716,11 @@ table.data-table tbody tr:last-child td {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: var(--slate-400);
+  color: var(--text-muted);
 }
 
 .modal-close:hover {
-  color: var(--slate-800);
+  color: var(--primary);
 }
 
 .modal-body {
@@ -700,11 +729,11 @@ table.data-table tbody tr:last-child td {
 
 .modal-footer {
   padding: 14px 20px;
-  border-top: 1px solid var(--slate-200);
+  border-top: 1px solid var(--border-subtle);
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  background-color: var(--slate-50);
+  background-color: #0e1118;
 }
 
 /* Toast System */
@@ -720,10 +749,11 @@ table.data-table tbody tr:last-child td {
 }
 
 .toast {
-  background: var(--white);
+  background: #141722;
   border-radius: var(--radius-sm);
   padding: 14px 18px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-subtle);
   border-left: 4px solid var(--primary);
   display: flex;
   align-items: center;
@@ -731,7 +761,7 @@ table.data-table tbody tr:last-child td {
   gap: 12px;
   font-size: 0.875rem;
   animation: slideIn 0.3s ease-out;
-  color: var(--dark);
+  color: #ffffff;
 }
 
 .toast.success { border-left-color: var(--success); }
@@ -748,14 +778,14 @@ table.data-table tbody tr:last-child td {
   to { opacity: 1; }
 }
 
-/* Footer */
+/* Footer - Royal Obsidian */
 footer.app-footer {
   margin-top: auto;
-  background: var(--white);
-  border-top: 1px solid var(--slate-200);
+  background: var(--bg-header);
+  border-top: 1px solid var(--border-gold);
   padding: 20px 0;
   font-size: 0.825rem;
-  color: var(--slate-600);
+  color: var(--text-muted);
   text-align: center;
 }
 
