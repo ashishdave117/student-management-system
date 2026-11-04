@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information Management System | Three-Tier Cloud Architecture</title>
+  
+  <!-- Modern Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+
+  <!-- Top Application Header -->
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="logo-group">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          <h1>Student Information Management System</h1>
+          <p>Three-Tier Cloud Architecture: Netlify + Render + MongoDB Atlas</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Live Connection Status -->
+        <div id="connection-status-pill" class="status-pill connecting" title="Live status between Netlify and Render Backend">
+          <span class="status-dot"></span>
+          <span id="connection-status-text">Connecting...</span>
+        </div>
+
+        <!-- API Endpoint Configuration Button -->
+        <button id="settings-btn" class="btn btn-outline btn-sm" title="Configure Backend Render URL">
+          ⚙️ Backend Config
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="flex: 1;">
+    <!-- Architecture Visualizer Banner -->
+    <div class="architecture-banner">
+      <div class="arch-header">
+        <span class="arch-title">⚡ Three-Tier Cloud Architecture Pipeline</span>
+        <span style="font-size: 0.8rem; color: var(--slate-600);">
+          API Endpoint: <code id="backend-url-display" style="background:var(--slate-100);padding:2px 6px;border-radius:4px;">http://localhost:5000</code>
+        </span>
+      </div>
+      <div class="arch-pipeline">
+        <!-- Tier 1 -->
+        <div class="arch-tier">
+          <span class="arch-icon">🌐</span>
+          <div class="arch-details">
+            <h4>Tier 1: Presentation Layer</h4>
+            <p>Static UI &amp; REST Client</p>
+            <span class="tier-badge badge-netlify">Hosted on Netlify</span>
+          </div>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="arch-tier">
+          <span class="arch-icon">⚙️</span>
+          <div class="arch-details">
+            <h4>Tier 2: Application Layer</h4>
+            <p>Node.js &amp; Express REST API</p>
+            <span class="tier-badge badge-render">Hosted on Render</span>
+          </div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="arch-tier">
+          <span class="arch-icon">🍃</span>
+          <div class="arch-details">
+            <h4>Tier 3: Database Layer</h4>
+            <p>studentDB &bull; students</p>
+            <span class="tier-badge badge-atlas" id="db-status-badge">Hosted on MongoDB Atlas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cold Start Wakeup Notice (Render Free Tier) -->
+    <div id="cold-start-alert" class="cold-start-alert">
+      ⏳ <strong>Waking up Render backend:</strong> Render free-tier services spin down after 15 minutes of inactivity. The server is currently waking up (usually takes 30 to 50 seconds). Once awake, all records will load automatically!
+    </div>
+
+    <!-- Metrics Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3 id="stat-total-students">0</h3>
+          <p>Total Students Enrolled</p>
+        </div>
+        <div class="stat-icon blue">👨‍🎓</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3 id="stat-total-depts">0</h3>
+          <p>Active Departments</p>
+        </div>
+        <div class="stat-icon purple">🏛️</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3 id="stat-avg-semester">-</h3>
+          <p>Average Semester</p>
+        </div>
+        <div class="stat-icon green">📊</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-info">
+          <h3 style="font-size: 1.2rem; color: var(--success); font-weight: 700;">Live Sync</h3>
+          <p>Cloud Monitored</p>
+        </div>
+        <div class="stat-icon amber">☁️</div>
+      </div>
+    </div>
+
+    <!-- Main Two-Column Layout -->
+    <div class="main-layout">
+      
+      <!-- Left Column: Add Student Card -->
+      <section class="card">
+        <div class="card-header">
+          <h2>➕ Add New Student</h2>
+        </div>
+        <div class="card-body">
+          <form id="add-student-form">
+            <div class="form-group">
+              <label for="student-id">Student ID <span class="req">*</span></label>
+              <input type="text" id="student-id" class="form-control" placeholder="e.g. ST101" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="student-name">Full Name <span class="req">*</span></label>
+              <input type="text" id="student-name" class="form-control" placeholder="e.g. Rahul Sharma" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="student-email">Email Address <span class="req">*</span></label>
+              <input type="email" id="student-email" class="form-control" placeholder="e.g. rahul@example.com" required autocomplete="off">
+            </div>
+
+            <div class="form-group">
+              <label for="student-dept">Department <span class="req">*</span></label>
+              <select id="student-dept" class="form-control" required>
+                <option value="" disabled selected>Select Department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Communication">Electronics &amp; Communication</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Data Science">Data Science</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="student-semester">Semester (1-12) <span class="req">*</span></label>
+                <input type="number" id="student-semester" class="form-control" min="1" max="12" value="1" required>
+              </div>
+
+              <div class="form-group">
+                <label for="student-contact">Contact No.</label>
+                <input type="tel" id="student-contact" class="form-control" placeholder="e.g. 9876543210">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 8px;">
+              💾 Save to MongoDB Atlas
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Right Column: Student Records Directory -->
+      <section class="card">
+        <div class="card-header">
+          <h2>📚 Student Records Directory</h2>
+          <button id="refresh-btn" class="btn btn-outline btn-sm" title="Reload data">
+            🔄 Refresh
+          </button>
+        </div>
+        <div class="card-body">
+          <!-- Search & Filter Bar -->
+          <div class="table-toolbar">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="search-input" class="form-control" placeholder="Search by name, ID, or email...">
+            </div>
+
+            <div class="filter-box">
+              <select id="filter-dept" class="form-control" style="width: auto;">
+                <option value="All">All Departments</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics & Communication">Electronics</option>
+                <option value="Mechanical Engineering">Mechanical</option>
+                <option value="Civil Engineering">Civil</option>
+                <option value="Data Science">Data Science</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Student Records Table -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Department</th>
+                  <th>Semester</th>
+                  <th>Contact</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="students-table-body">
+                <!-- Rendered dynamically via app.js -->
+              </tbody>
+            </table>
+
+            <!-- State Feedback (Loading, Empty, Error) -->
+            <div id="table-state" style="display: none;"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Edit Student Modal -->
+  <div id="edit-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>✏️ Edit Student Information</h3>
+        <button id="close-edit-modal" class="modal-close">&times;</button>
+      </div>
+      <form id="edit-student-form">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="edit-student-id">Student ID (Cannot be changed)</label>
+            <input type="text" id="edit-student-id" class="form-control" readonly disabled style="background-color: var(--slate-100);">
+          </div>
+
+          <div class="form-group">
+            <label for="edit-student-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="edit-student-name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-student-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="edit-student-email" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-student-dept">Department <span class="req">*</span></label>
+            <select id="edit-student-dept" class="form-control" required>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Electronics & Communication">Electronics &amp; Communication</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Data Science">Data Science</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-student-semester">Semester <span class="req">*</span></label>
+              <input type="number" id="edit-student-semester" class="form-control" min="1" max="12" required>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-student-contact">Contact No.</label>
+              <input type="tel" id="edit-student-contact" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel-edit-btn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Backend Settings Modal -->
+  <div id="settings-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>⚙️ Render Backend Configuration</h3>
+        <button id="close-settings-modal" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--slate-600); margin-bottom: 12px;">
+          Set the public URL of your Node.js/Express server deployed on Render. When deploying to Netlify, this ensures the frontend sends REST API calls to your live cloud server.
+        </p>
+        <div class="form-group">
+          <label for="api-url-input">Render Service API URL</label>
+          <input type="url" id="api-url-input" class="form-control" placeholder="https://your-service-name.onrender.com">
+          <small style="color: var(--slate-400); font-size: 0.75rem;">Example: <code>https://student-api.onrender.com</code> or <code>http://localhost:5000</code></small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="reset-settings-btn" class="btn btn-secondary">Reset to Default</button>
+        <button type="button" id="save-settings-btn" class="btn btn-primary">Save &amp; Connect</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications -->
+  <div id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <div>
+        <strong>Cloud Architecture:</strong> Client (Browser) &rarr; Netlify (Presentation) &rarr; Render (Application) &rarr; MongoDB Atlas (Database)
+      </div>
+      <div>
+        <span>Automated Continuous Deployment via GitHub CI/CD</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
