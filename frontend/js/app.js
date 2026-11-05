@@ -35,12 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeEditModalBtn = document.getElementById('close-edit-modal');
   const cancelEditBtn = document.getElementById('cancel-edit-btn');
 
+  // Server Switcher & Settings
+  const serverSelect = document.getElementById('server-select');
+  const server1UrlInput = document.getElementById('server1-url-input');
+  const server2UrlInput = document.getElementById('server2-url-input');
+
   const settingsModal = document.getElementById('settings-modal');
   const settingsBtn = document.getElementById('settings-btn');
   const closeSettingsBtn = document.getElementById('close-settings-modal');
   const saveSettingsBtn = document.getElementById('save-settings-btn');
   const resetSettingsBtn = document.getElementById('reset-settings-btn');
-  const apiUrlInput = document.getElementById('api-url-input');
 
   // Toast Container
   const toastContainer = document.getElementById('toast-container');
@@ -356,11 +360,30 @@ document.addEventListener('DOMContentLoaded', () => {
     loadStudents();
   });
 
+  // Initialize Server Switcher state
+  if (serverSelect) {
+    serverSelect.value = window.APP_CONFIG.getActiveServerKey();
+    serverSelect.addEventListener('change', async () => {
+      const selectedKey = serverSelect.value;
+      const targetUrl = window.APP_CONFIG.switchServer(selectedKey);
+      const serverLabel = serverSelect.options[serverSelect.selectedIndex].text;
+      showToast(`Switched active backend to: ${serverLabel}`, 'info');
+
+      await checkServerHealth(false);
+      await loadStudents();
+    });
+  }
+
   // ========================================================
-  // Settings Modal (Configuring API URL)
+  // Settings Modal (Configuring Server Cluster)
   // ========================================================
   settingsBtn.addEventListener('click', () => {
-    apiUrlInput.value = API.getBaseUrl();
+    if (server1UrlInput) {
+      server1UrlInput.value = localStorage.getItem('SERVER_URL_server_1') || window.APP_CONFIG.SERVERS.server_1.url;
+    }
+    if (server2UrlInput) {
+      server2UrlInput.value = localStorage.getItem('SERVER_URL_server_service_2') || window.APP_CONFIG.SERVERS.server_service_2.url;
+    }
     settingsModal.classList.add('active');
   });
 
@@ -369,25 +392,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   saveSettingsBtn.addEventListener('click', async () => {
-    const url = apiUrlInput.value.trim();
-    if (!url) {
-      showToast('Please provide a valid URL', 'warning');
-      return;
+    if (server1UrlInput && server1UrlInput.value.trim()) {
+      window.APP_CONFIG.setServerUrl('server_1', server1UrlInput.value.trim());
+    }
+    if (server2UrlInput && server2UrlInput.value.trim()) {
+      window.APP_CONFIG.setServerUrl('server_service_2', server2UrlInput.value.trim());
     }
 
-    window.APP_CONFIG.setApiUrl(url);
     settingsModal.classList.remove('active');
-    showToast(`API URL updated to: ${url}`, 'info');
+    showToast('Server cluster configuration saved.', 'info');
 
     await checkServerHealth(false);
     await loadStudents();
   });
 
   resetSettingsBtn.addEventListener('click', async () => {
-    window.APP_CONFIG.resetApiUrl();
-    apiUrlInput.value = window.APP_CONFIG.DEFAULT_API_URL;
+    window.APP_CONFIG.resetDefaults();
+    if (serverSelect) serverSelect.value = 'server_1';
     settingsModal.classList.remove('active');
-    showToast('API URL reset to default configuration.', 'info');
+    showToast('Reset to default Server 1 configuration.', 'info');
 
     await checkServerHealth(false);
     await loadStudents();

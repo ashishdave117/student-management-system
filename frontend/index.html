@@ -27,15 +27,24 @@
       </div>
 
       <div class="header-actions">
+        <!-- Server Switcher Dropdown -->
+        <div class="server-switch-group" style="display:flex;align-items:center;gap:6px;">
+          <label for="server-select" style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;color:var(--text-gold);">SERVER:</label>
+          <select id="server-select" class="form-control" style="width:auto;padding:5px 10px;font-size:0.8rem;background:#141824;color:#f8fafc;border:1px solid var(--border-gold);cursor:pointer;">
+            <option value="server_1">Server 1 (Primary)</option>
+            <option value="server_service_2">Server 2 (server_service_2)</option>
+          </select>
+        </div>
+
         <!-- Live Connection Status -->
-        <div id="connection-status-pill" class="status-pill connecting" title="Live status between Netlify and Render Backend">
+        <div id="connection-status-pill" class="status-pill connecting" title="Live status between Netlify and active Render Backend">
           <span class="status-dot"></span>
           <span id="connection-status-text">Connecting...</span>
         </div>
 
         <!-- API Endpoint Configuration Button -->
         <button id="settings-btn" class="btn btn-outline btn-sm" title="Configure Backend Render URL">
-          Backend Settings
+          Server Settings
         </button>
       </div>
     </div>
@@ -293,17 +302,20 @@
   <div id="settings-modal" class="modal-overlay">
     <div class="modal-dialog">
       <div class="modal-header">
-        <h3>Server Configuration</h3>
+        <h3>Server Cluster Configuration</h3>
         <button id="close-settings-modal" class="modal-close" aria-label="Close modal">&times;</button>
       </div>
       <div class="modal-body">
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
-          Configure the target REST API endpoint for backend service communication. The client stores this setting locally in browser storage.
+          Configure endpoints for your Render cloud containers. Switch between Server 1 and server_service_2 dynamically.
         </p>
         <div class="form-group">
-          <label for="api-url-input">API Base URL</label>
-          <input type="url" id="api-url-input" class="form-control" placeholder="https://your-service.onrender.com">
-          <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; display: block;">Default: <code>https://student-management-system-oq04.onrender.com</code></small>
+          <label for="server1-url-input">Server 1 URL (Primary)</label>
+          <input type="url" id="server1-url-input" class="form-control" placeholder="https://student-management-system-oq04.onrender.com">
+        </div>
+        <div class="form-group">
+          <label for="server2-url-input">Server 2 URL (server_service_2)</label>
+          <input type="url" id="server2-url-input" class="form-control" placeholder="https://server-service-2.onrender.com">
         </div>
       </div>
       <div class="modal-footer">
