@@ -1,4 +1,5 @@
 services:
+  # Service 1: Backend API (Node.js + Express + MongoDB Atlas)
   - type: web
     name: student-management-backend
     runtime: node
@@ -12,4 +13,18 @@ services:
       - key: MONGODB_URI
         sync: false
       - key: FRONTEND_URL
-        sync: false
+        value: '*'
+
+  # Service 2: Frontend Container Web Service
+  - type: web
+    name: service-2
+    runtime: node
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

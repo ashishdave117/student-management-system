@@ -45,6 +45,11 @@ const corsOptions = {
       return callback(null, true);
     }
 
+    // Match any Render frontend service (e.g., service-2.onrender.com)
+    if (origin.endsWith('.onrender.com')) {
+      return callback(null, true);
+    }
+
     // Otherwise still allow in non-production, or restrict in production
     if (process.env.NODE_ENV !== 'production') {
       return callback(null, true);
